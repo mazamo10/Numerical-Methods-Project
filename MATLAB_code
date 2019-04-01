@@ -36,4 +36,15 @@
 %   Discuss your results.
 %%
 % *2)*
+% Investigate the stability of the following numerical schemes for the ODE
 %
+% $$\frac{\delta y}{\delta x}=-\alpha y$$
+%
+% for $\alpha>0$. Show whether the scheme is conditionally or unconditionally stable. Derive the stability threshold on the step
+% size $\Delta x$ if the scheme is conditionally stable.
+%
+% # Modified Euler Method in implicit form:
+% 
+%   $$y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_{i+1})]$$
+%
+% #
