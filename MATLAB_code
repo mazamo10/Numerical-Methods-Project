@@ -1,0 +1,39 @@
+%% Numerical Methods Project
+%%
+% *Group Members*
+%
+% * Dipshit 1
+% * Dipshit 2
+% * Random Person
+% * The Other Guy
+%
+%% Prart 1: Exploration of Stablity
+%%
+% *1)*
+%
+% Given the ODE
+%
+% $$\frac{\delta y}{\delta x}=-4y$$
+%
+% with the initial condition $y(0)=2$ on the interval $x\in(0,10)$
+%
+% # Calculate  the  largest  step  size, $\Delta x^{\ast}$,  required  to  maintain  stability 
+%   of  the  numerical  solution  to  this equation using explicit Euler
+%   method.
+% # Choose a step size five times smaller than this value,  $0.2 \Delta x^{\ast}$.  Solve the ODE with explicit Euler
+%   method using this step size with MATLAB (self-written programs).
+% # Choose a step size $20\%$ larger than this value, $1.2 \Delta x^{\ast}$.  Solve the ODE with explicit Euler method
+%   using this step size with MATLAB (self-written programs).
+% # Repeat parts (2) and (3) with implicit Euler method using MATLAB.
+% # Suppose that you now want to solve this equation with a $2^{nd}$ order method (modified Euler in a form of predictor-corrector).
+%   Solve the above equation with the predictor-corrector method and step sizes of $0.2 \Delta x^{\ast}$ and $1.2 \Delta x^{\ast}$.
+%   Do you observe an instability?
+% # Modified  Euler  method  can  be  used  in  an  implicit  form  similar  to  the  way  of  implicit  Euler 
+%   (without doing a predictor-corrector step, but with solving for $y_{i+1}$), since this equation is linear.
+%   Solve the above equation with the modified Euler method in the implicit form and step sizes of $0.2 \Delta x^{\ast}$ and $1.2 \Delta x^{\ast}$.
+%   Do you observe an instability now?
+% # Plot all the solutions, including the analytical solution to this problem, on the same plot-one plot for each step size.
+%   Discuss your results.
+%%
+% *2)*
+%
