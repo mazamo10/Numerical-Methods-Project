@@ -7,7 +7,7 @@
 % * Random Person
 % * The Other Guy
 %
-%% Prart 1: Exploration of Stablity
+%% Prart I: Exploration of Stablity
 %%
 % *1)*
 %
@@ -36,6 +36,7 @@
 %   Discuss your results.
 %%
 % *2)*
+%
 % Investigate the stability of the following numerical schemes for the ODE
 %
 % $$\frac{\delta y}{\delta x}=-\alpha y$$
@@ -47,4 +48,47 @@
 % 
 %   $$y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_{i+1})]$$
 %
-% #
+% # *Extra Credit* Modified Euler Method in a predictor-corrector form:
+%
+%   $$y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_i+hf(x_i,y_i))]$$
+%
+%% Part II: Exploration of Accuracy
+%
+% *3)*
+%
+% Consider the following first-order ODE:
+%
+% $$\frac{\delta y}{\delta x}=x^2-\frac{2 y}{x}$$
+%
+% with $y(1)=2$. Numerically solve on the interval from $x=1$ to $x=5$ using
+% 
+% # Explicit Euler method
+% # Implicit Euler method
+% # Modified Euler method (predictor-corrector)
+% # Modified Euler method in an implicit form
+%
+% and explore the accuracy of these methods. The anaytical solution to this ODE is
+%
+% $$y=\frac{9}{5x^2}+\frac{x^3}{5}$$
+%
+% For each method,
+%
+% * Write the MATLAB function that solves the ODE by using the number of intervals $N$ as an input argument.
+% * Solve the ODE using your MATLAB function for $N$ equal to $4,8,16,32$. Calculate the step size $h$ inside the function.
+% * Calculate the $E_{L_2}$ error norm between the true solution and the numerical solution for each $N$.
+%   Recall that the $E_{L_2}$ error norm is defied as
+%
+%   $$E_{L_2}=\sqrt{\frac{\sum^{N+1}_{i=1}{(y_i^{numer}-y_i^{true})^2}{N+1}}$$
+%
+% The following plots should be persented:
+%
+% * Plot your solutions for all the methods (1)-(4), along with the anaytical solution , on the plot for $N=4$.
+%   Do not print out the values at your grid points.
+% * Plot your solutions for all the methods (1)-(4), along with the anaytical solution , on the plot for $N=32$.
+%   Do not print out the values at your grid points.
+% * Plot the values of the $E_{L_2}$ error norm for all the methods (1)-(4), as a function of $N$ on the same plot,
+%   in log-log scale. Estimate the order of convergence for each method from this plot.
+%
+%% Part III: Application
+
+
