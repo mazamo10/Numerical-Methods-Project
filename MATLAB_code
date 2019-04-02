@@ -78,7 +78,7 @@
 % * Calculate the $E_{L_2}$ error norm between the true solution and the numerical solution for each $N$.
 %   Recall that the $E_{L_2}$ error norm is defied as
 %
-% $$E_{L_2}=\sqrt{\frac{\sum^{N+1}_{i=1}{(y_i^{numer}-y_i^{true})^2}{N+1}}$$
+% $$E_{L_2}=\sqrt{\frac{\sum^{N+1}_{i=1}(y_i^{numer}-y_i^{true})^2}{N+1}}$$
 %
 % The following plots should be persented:
 %
@@ -90,5 +90,76 @@
 %   in log-log scale. Estimate the order of convergence for each method from this plot.
 %
 %% Part III: Application
+% *4)*
+%
+% An inductor and a nonlinear resistor with resistance $R=500+250 I^2\ \Omega$ are connected in series with a DC
+% power source and a switch, as shown in Figure 1. The switch is initially open and then is closed at time $t=0$.
+% The current $I$ in the circuit for $t>0$ is determined from the solution of the equation:
+%
+% $$\frac{\delta I}{\delta t}=\frac{V_0}{L}-\frac{R}{L}I$$
+%
+% For $V_0=500\ V$ and $L=15\ H$, determine and plot the current as a function of time for $t\in[0,0.1]\ s$.
+%
+% <<Figure 1.PNG>>
+%
+%
+% # Solve the problem with the explicit Euler method and a modified Euler method (predictor-corrector) using 
+%   step size of $0.005\ s$. Plot both solutions as $I(t)$ on the same plot. Can you trust the explicit Euler
+%   solution? Does it look strange?
+% # To figure out what is going on, reduce the step size to $0.001\ s$ and repeat both calculations. Plot both solutions
+%   as $I(t)$ on the same plot. Does everything look okay now?
+% # Now increase the step size to $0.01\ s$ and repeat both calculations. Plot both solutions as $I(t)$ on the 
+%   same plot. What do you observe? Can you comment on what is happening with the explicit Euler solution and
+%   why it did not look right in part (1)?
+% # Now increase the step size to $0.015\ s$ and repeat both calculations. Plot both solutions as $I(t)$ on diffrent
+%   plots. What can you say now ablout the predictor-corrector method?
+%% Functions
+function [y,t,h]=Euler_explicit(F,tspan,y0,N)
+    % This ODE solver utilizes Euler's explicit method to evaluate the function
+    % $y'=F(y,x)$ over to interval provided by tspan. This method is unstable for large step sizes and
+    % is first-order accurate.
+    
+    h=(tspan(2)-tspan(1))/N;
+    t=tspan(1):h:tspan(2);  
+    y=zeros(1,N+1);
+    y(1)=y0;
+    for i=1:N
+        y(i+1)=y(i)+h*F(t(i),y(i));
+    end
+end
 
+function [y,t,h]=Euler_implicit(F,tspan,y0,N)
+    % This ODE solver utilizes Euler's implicit method to evaluate the function
+    % $y'=G(y,x)$ over to interval provided by tspan. This method is unconditionally stable and
+    % is first-order accurate. Note that the function $F$ only contains $y_i$ terms and does not depend
+    % on $y_{i+1}$.
+    
+    h=(tspan(2)-tspan(1))/N;
+    t=tspan(1):h:tspan(2);
+    
+    y=zeros(1,N+1);
+
+    y(1)=y0;
+
+    for i=1:N
+        y(i+1)=F(0,y(i),h);
+    end
+end
+
+function [y,t,h]=mod_Euler(F,tspan,y0,N)
+    % This ODE solver utilizes the modified Euler's in its predictor-corrector form to evaluate the function
+    % $y'=F(y,x)$ over to interval provided by tspan. This method is unstable for large step sizes and
+    % is second-order accurate.
+    
+    h=(tspan(2)-tspan(1))/N;
+    t=tspan(1):h:tspan(2);  
+    y=zeros(1,N+1);
+    
+    y(1)=y0;
+
+    for i=1:N
+      y_guess=y(i)+h*F(t(i),y(i));
+      y(i+1)=y(i)+(h/2)*(F(t(i),y(i))+F(t(i+1),y_guess));
+    end
+end
 
