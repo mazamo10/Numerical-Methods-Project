@@ -46,11 +46,11 @@
 %
 % # Modified Euler Method in implicit form:
 % 
-%   $$y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_{i+1})]$$
+% $$y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_{i+1})]$$
 %
 % # *Extra Credit* Modified Euler Method in a predictor-corrector form:
 %
-%   $$y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_i+hf(x_i,y_i))]$$
+% $$y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_i+hf(x_i,y_i))]$$
 %
 %% Part II: Exploration of Accuracy
 %
@@ -78,7 +78,7 @@
 % * Calculate the $E_{L_2}$ error norm between the true solution and the numerical solution for each $N$.
 %   Recall that the $E_{L_2}$ error norm is defied as
 %
-%   $$E_{L_2}=\sqrt{\frac{\sum^{N+1}_{i=1}{(y_i^{numer}-y_i^{true})^2}{N+1}}$$
+% $$E_{L_2}=\sqrt{\frac{\sum^{N+1}_{i=1}{(y_i^{numer}-y_i^{true})^2}{N+1}}$$
 %
 % The following plots should be persented:
 %
